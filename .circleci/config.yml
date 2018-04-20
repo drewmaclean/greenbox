@@ -34,6 +34,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
+      - run:
+          command: sudo apt-get -y -qq install awscli 
       - run: 
           name: Deploy to S3 if tests pass and branch is Master
           command: aws s3 sync drewtestingsite s3://drewtestingsite --delete
