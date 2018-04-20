@@ -41,7 +41,7 @@ jobs:
           command: aws configure set default.s3.signature_version s3v4
       - run: 
           name: Deploy to S3 if tests pass and branch is Master
-          command: aws s3 sync . s3://drewtestingsite --delete
+          command: aws --region us-east-2 s3 sync . s3://drewtestingsite --delete
 
 
 #deployment:
