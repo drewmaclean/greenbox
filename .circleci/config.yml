@@ -34,13 +34,13 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      #- run: 
-      #    name: Deploy to S3 if tests pass and branch is Master
-      #    command: aws s3 sync drewtestingsite s3://drewtestingsite --delete
+      - run: 
+          name: Deploy to S3 if tests pass and branch is Master
+          command: aws s3 sync drewtestingsite s3://drewtestingsite --delete
 
 
-deployment:
-  prod:
-    branch: master
-    name: Deploy to S3 if tests pass and branch is Master
-    command: aws s3 sync drewtestingsite s3://drewtestingsite --delete
+#deployment:
+#  prod:
+#    branch: master
+#    name: Deploy to S3 if tests pass and branch is Master
+#    command: aws s3 sync drewtestingsite s3://drewtestingsite --delete
