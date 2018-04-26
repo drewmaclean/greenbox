@@ -18,10 +18,9 @@
         type="password"
         class="form-control"
         placeholder="Enter your password"
-        v-model="credentials.password"
+        v-model="this.credentials.password"
       >
     </div>
-    <p> {{par}} </p>
     <button class="btn btn-primary" @click="submit()">Next</button>
   </div>
 </template>
@@ -31,11 +30,8 @@
 export default {
   name: 'signupinfo',
   created: function(){
-    this.par = "joe"
-    //if (this.$route.params.username) {
-    //this.par = $route.params.username
-    //this.par = "joe"
-   // }
+    this.credentials.username = this.$route.params.user
+    this.credentials.password = this.$route.params.pass
 },
   data() {
     return {

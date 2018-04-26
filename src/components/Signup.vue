@@ -21,7 +21,7 @@
         v-model="credentials.password"
       >
     </div>
-    <button class="btn btn-primary" router-link to="'signupinfo'" @click="submit()">Next</button>
+    <router-link :to="{ name: 'signupinfo', params: { user: this.credentials.username, pass: this.credentials.password} }" @click="submit()">Next</router-link>
   </div>
 </template>
 
@@ -42,11 +42,6 @@ export default {
   methods: {
 
     submit() {
-      this.$router.push({ name: 'signupinfo', 
-                          params: { username: this.credentials.username
-                                    }
-                          }
-                        )
     }
   }
 }

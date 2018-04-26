@@ -1,9 +1,7 @@
 <template>
   <div>
     <h1>BUY POT HERE</h1>
-    <button class="btn btn-primary">
-      <router-link to="/Login">Shop Now</router-link>
-    </button>
+    <router-link to="/Login" tag="button">Shop Now</router-link>
     <div class="quote-area" v-if="quote">
       <h2><blockquote>{{ quote }}</blockquote></h2>      
     </div>

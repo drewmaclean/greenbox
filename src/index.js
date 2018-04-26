@@ -24,7 +24,7 @@ routes: [
     name: 'signup',
     component: Signup
   },
-  {path: '/signupinfo',
+  {path: '/signupinfo/:user:pass',
     name: 'signupinfo',
     component: SignupInfo}
 ]})

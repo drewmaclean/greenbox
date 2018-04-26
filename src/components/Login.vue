@@ -23,7 +23,7 @@
     </div>
     <button class="btn btn-primary" @click="submit()">Login</button>
     <h2>or</h2>
-    <button class="btn btn-primary"> <router-link to="/signup">Sign Up</router-link></button>
+    <router-link to="/signup" tag="button">Sign Up</router-link>
     <router-view></router-view>
   </div>
 </template>
