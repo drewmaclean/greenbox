@@ -3,7 +3,7 @@ import App from './components/App.vue'
 import Home from './components/Home.vue'
 import Signup from './components/Signup.vue'
 import Login from './components/Login.vue'
-import SignupInfo from './components/SignupInfo.vue'
+import SignupInfo from './components/SignUpInfo.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
