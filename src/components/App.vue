@@ -13,15 +13,18 @@
   </nav>
 </template><!-->
 <template>
-  <div style="text-align:center">
-    <h1>BUY POT HERE</h1>
-    <router-link to="/Login" tag="button">Shop Now</router-link>
-    <router-link to="/Home" tag="button">Home</router-link>
-    <div class="quote-area" v-if="quote">
-      <h2><blockquote>{{ quote }}</blockquote></h2>      
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <div style="text-align:center">
+            <h1 v-if="$route.name != 'default'">BUY POT HERE</h1>
+            <router-link v-if="$route.name != 'default'" to="/Login" tag="button">Shop Now</router-link>
+            <router-link v-if="$route.name != 'default'" to="/Home" tag="button">Home</router-link>
+            <router-view></router-view>
+        </div>
+      </ul>
     </div>
-    <router-view></router-view>
-  </div>
+  </nav>
 </template>
 
 <script>

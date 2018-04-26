@@ -21,7 +21,7 @@
         v-model="this.credentials.password"
       >
     </div>
-    <button class="btn btn-primary" @click="submit()">Next</button>
+    <router-link to="/products" tag="button">Products</router-link>
   </div>
 </template>
 

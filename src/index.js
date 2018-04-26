@@ -6,13 +6,18 @@ import Login from './components/Login.vue'
 import SignupInfo from './components/SignUpInfo.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import Products from './components/Products.vue'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
+Vue.use(Vuetify)
 Vue.use(VueRouter)
 
 const router = new VueRouter({
 routes: [
   {path:'/',
-    component: App
+    name: 'default',
+    component: Home
   },
   {path:'/Home',
     component: Home
@@ -26,7 +31,12 @@ routes: [
   },
   {path: '/signupinfo/:user:pass',
     name: 'signupinfo',
-    component: SignupInfo}
+    component: SignupInfo
+  },
+  {path: '/Products',
+    name: 'Products',
+    component: Products
+  }
 ]})
 
 new Vue({
