@@ -13,18 +13,20 @@
   </nav>
 </template><!-->
 <template>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <ul class="nav navbar-nav">
-        <div style="text-align:center">
-            <h1 v-if="$route.name != 'default'">BUY POT HERE</h1>
-            <router-link v-if="$route.name != 'default'" to="/Login" tag="button">Shop Now</router-link>
-            <router-link v-if="$route.name != 'default'" to="/Home" tag="button">Home</router-link>
-            <router-view></router-view>
-        </div>
-      </ul>
-    </div>
-  </nav>
+  <v-app id="inspire" dark>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <div style="text-align:center">
+              <h1 v-if="false">BUY POT HERE</h1>
+              <router-link v-if="false" to="/Login" tag="button">Shop Now</router-link>
+              <router-link v-if="false" to="/Home" tag="button">Home</router-link>
+              <router-view></router-view>
+          </div>
+        </ul>
+      </div>
+    </nav>
+  </v-app>
 </template>
 
 <script>

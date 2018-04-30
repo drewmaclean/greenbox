@@ -9,7 +9,11 @@ import VueResource from 'vue-resource'
 import Products from './components/Products.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default-dark.css'
 
+Vue.use(VueMaterial)
 Vue.use(Vuetify)
 Vue.use(VueRouter)
 

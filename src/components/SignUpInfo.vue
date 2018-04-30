@@ -22,6 +22,9 @@
       >
     </div>
     <router-link to="/products" tag="button">Products</router-link>
+    <v-footer app fixed>
+      <span>&copy; 2017 Greenbox</span>
+    </v-footer>
   </div>
 </template>
 
