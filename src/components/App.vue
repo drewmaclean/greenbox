@@ -18,7 +18,7 @@
       <div class="container">
         <ul class="nav navbar-nav">
           <div style="text-align:center">
-              <h1 v-if="false">BUY POT HERE</h1>
+              <h1 v-if="false">Start Gentax</h1>
               <router-link v-if="false" to="/Login" tag="button">Shop Now</router-link>
               <router-link v-if="false" to="/Home" tag="button">Home</router-link>
               <router-view></router-view>
