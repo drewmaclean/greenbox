@@ -8,8 +8,11 @@
             <h1>Start Gentax</h1>
             <router-link to="/Login" tag="button">Upgrade Now</router-link>
             <br>
-            <router-link to="/Test" tag="button">Test Now</router-link>
-            <router-link to="/Test2" tag="button">Test2 Now</router-link>
+            <router-link to="/Test" tag="button">Test</router-link>
+            <br>
+            <router-link to="/Test2" tag="button">Test2</router-link>
+            <br>
+            <router-link to="/Products" tag="button">Products</router-link>
             <div class="quote-area" v-if="quote">
               <h2><blockquote>{{ quote }}</blockquote></h2>      
             </div> 

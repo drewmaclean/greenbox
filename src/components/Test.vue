@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     Clicked: {{ $store.state.count }} times, count is {{ evenOrOdd }}.
     <br>
     <button @click="increment">+</button>
@@ -9,8 +9,8 @@
     <button @click="incrementIfOdd">Increment if odd</button>
     <br>
     <button @click="incrementAsync">Increment async</button>
-  </div>
-  <router-link to="/Test2" tag="button">Test2 Now</router-link
+    <router-link to="/Home" tag="button">Home</router-link>
+  </v-app>
 </template>
 
 <script>

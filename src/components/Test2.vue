@@ -9,6 +9,7 @@
     <button @click="incrementIfOdd">Increment if odd</button>
     <br>
     <button @click="incrementAsync">Increment async</button>
+    <router-link to="/Home" tag="button">Home</router-link>
   </v-app>
 </template>
 

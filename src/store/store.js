@@ -38,7 +38,7 @@ const actions = {
       setTimeout(() => {
         commit('increment')
         resolve()
-      }, 1000)
+      }, 10000)
     })
   }
 }
