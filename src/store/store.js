@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-  count: 0
-}
+  isLoggedIn: false
+};
 
 // mutations are operations that actually mutates the state.
 // each mutation handler gets the entire state tree as the
@@ -15,38 +15,26 @@ const state = {
 // mutations must be synchronous and can be recorded by plugins
 // for debugging purposes.
 const mutations = {
-  increment (state) {
-    state.count++
+  login(state) {
+    state.isLoggedIn = true;
   },
-  decrement (state) {
-    state.count--
+  logout(state) {
+    state.isLoggedIn = false;
   }
-}
+};
 
 // actions are functions that cause side effects and can involve
 // asynchronous operations.
+// Drew Note -- Maybe call the api gateway here and force wait or die action for login?
 const actions = {
-  increment: ({ commit }) => commit('increment'),
-  decrement: ({ commit }) => commit('decrement'),
-  incrementIfOdd ({ commit, state }) {
-    if ((state.count + 1) % 2 === 0) {
-      commit('increment')
-    }
-  },
-  incrementAsync ({ commit }) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        commit('increment')
-        resolve()
-      }, 10000)
-    })
-  }
-}
+  login: ({ commit }) => commit("login"),
+  logout: ({ commit }) => commit("logout"),
+};
 
 // getters are functions
 const getters = {
-  evenOrOdd: state => state.count % 2 === 0 ? 'even' : 'odd'
-}
+  loggedIn: state => (state.isLoggedIn)
+};
 
 // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.
@@ -55,4 +43,4 @@ export default new Vuex.Store({
   getters,
   actions,
   mutations
-})
+});

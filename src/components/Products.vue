@@ -1,5 +1,6 @@
 <template>
   <v-app id="inspire" dark>
+    <gb-header></gb-header>
     <v-navigation-drawer clipped fixed v-model="drawer" app>
       <v-list dense>
         <v-list-tile @click="$vuetify.goTo(target, options)">

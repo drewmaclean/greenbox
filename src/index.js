@@ -8,7 +8,6 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import Products from './components/Products.vue'
 import Test from './components/Test.vue'
-import Test2 from './components/Test2.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import VueMaterial from 'vue-material'
@@ -47,11 +46,7 @@ routes: [
   {path: '/Test',
     name: 'Test',
     component: Test
-  },
-  {path: '/Test2',
-  name: 'Test2',
-  component: Test2
-}
+  }
 ]})
 
 new Vue({

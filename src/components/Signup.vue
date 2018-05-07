@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire" dark>
-    <v-toolbar-title prominent = "true">SpaceCase</v-toolbar-title>
+    <gb-header></gb-header>
     <v-container fluid fill-height>
         <v-layout align-center justify-center v-if="!addPhoto">
           <v-flex lg10 sm8 md4>
@@ -52,16 +52,21 @@
           </v-flex>
         </v-layout>
     </v-container>
-    <v-footer app fixed>
-      <span>&copy; 2017 Greenbox</span>
-    </v-footer>
+    <gb-footer></gb-footer>
   </v-app>
 </template>
 
 <script>
 import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
+import gbHeader from './Header.vue'
+import gbFooter from './Footer.vue'
 export default {
   name: 'signup',
+  components: {
+    gbHeader,
+    gbFooter
+  },
   data() {
     return {
       credentials: {
@@ -79,6 +84,9 @@ export default {
       addPhoto: false
     }
   },
+  computed: mapGetters([
+    'loggedIn'
+  ]),
   mounted() {
     this.video = this.$refs.video
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
