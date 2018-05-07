@@ -10,12 +10,8 @@ import Products from './components/Products.vue'
 import Test from './components/Test.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default-dark.css'
 import store from './store/store'
 
-Vue.use(VueMaterial)
 Vue.use(Vuetify)
 Vue.use(VueRouter)
 

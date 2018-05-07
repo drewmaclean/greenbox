@@ -1,6 +1,5 @@
 <template>
   <v-app id="inspire" dark>
-    <gb-header></gb-header>
     <v-navigation-drawer clipped fixed v-model="drawer" app>
       <v-list dense>
         <v-list-tile @click="$vuetify.goTo(target, options)">
@@ -53,6 +52,7 @@
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Greenbox</v-toolbar-title>
+      <gb-header></gb-header>
     </v-toolbar>
     <v-content>
       <v-container >
@@ -72,23 +72,61 @@
           <v-flex xs12>
             <h2 id="munchies">4</h2>
           </v-flex>
+          <!-- <div v-for:"product in products" :key="product.flngProductKey" >
+            <gb-product
+              :id="1"
+              url="1.jpg"
+              title="candy"
+              description="rock candy"
+              quantity="100"
+              price="5"
+            ></gb-product> -->
+          </div>
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer app fixed>
-      <span>&copy; 2017 Greenbox</span>
-    </v-footer>
+    <gb-footer></gb-footer>
   </v-app>
 </template>
 
 <script>
+import gbHeader from './Header.vue'
+import gbFooter from './Footer.vue'
+import gbProduct from './Product.vue'
+import axios from 'axios'
 export default {
   data() {
-    drawer: true
+    return {
+      drawer: false,
+      productList: []
+    }
+  },
+  components: {
+    gbHeader,
+    gbFooter,
+    gbProduct
   },
   props: {
     source: String
-  }//,
+  },
+  created() {
+    axios
+        .get(
+          "https://w8ldp460na.execute-api.us-east-2.amazonaws.com/test/getproducts"
+        )
+        .then(response => {
+          this.productList.splice(0, this.productList.length);
+          for (let row of response.data) {
+            this.productList.push(row);
+          }
+          //this.output.push(response.data);
+          console.log("Got List");
+        })
+        .catch(err => {
+          console.error(err);
+        });
+  }
+  //,
   // computed: {
   //   options () {
   //      return {
