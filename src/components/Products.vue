@@ -1,15 +1,3 @@
-<template>
-  <v-app id="inspire" dark>
-    <v-navigation-drawer clipped fixed v-model="drawer" app>
-      <v-list dense>
-        <v-list-tile @click="$vuetify.goTo(target, options)">
-          <v-list-tile-action>
-            <v-icon>search</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Search</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
         <!-- <v-list-tile @click="$vuetify.goTo(target, options)">
           <v-list-tile-action>
             <v-icon>spa</v-icon>
@@ -47,6 +35,18 @@
             <v-icon>kitchen</v-icon>
           </v-list-tile-action>
         </v-list-tile> -->
+<template>
+  <v-app id="inspire" dark>
+    <v-navigation-drawer clipped fixed v-model="drawer" app>
+      <v-list dense>
+        <v-list-tile @click="$vuetify.goTo(target, options)">
+          <v-list-tile-action>
+            <v-icon>search</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Search</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
@@ -55,7 +55,7 @@
       <gb-header></gb-header>
     </v-toolbar>
     <v-content>
-      <v-container >
+      <v-container>
         <v-layout row wrap>
           <v-flex xs12>
             <h2 id="pot">1</h2>
@@ -72,16 +72,16 @@
           <v-flex xs12>
             <h2 id="munchies">4</h2>
           </v-flex>
-          <!-- <div v-for:"product in products" :key="product.flngProductKey" >
-            <gb-product
-              :id="1"
-              url="1.jpg"
-              title="candy"
-              description="rock candy"
-              quantity="100"
-              price="5"
-            ></gb-product> -->
-          </div>
+          <v-list v-for="product in productList" :key="product.flngProductKey" >
+            <gb-product 
+              :id="product.flngProductKey" 
+              :url="product.fstrProductImageName" 
+              :title="product.fstrTitle" 
+              :description="product.fstrDescription" 
+              :quantity="product.flngQuantity"
+              :price="product.fcurPrice">
+            </gb-product>
+          </v-list>
         </v-layout>
       </v-container>
     </v-content>

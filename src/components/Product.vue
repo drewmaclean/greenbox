@@ -5,7 +5,7 @@
         <v-card-media
           class="white--text"
           height="200px"
-          :src="combinedUrl"
+          :src="getImgUrl(url)"
         >
           <v-container fill-height fluid>
             <v-layout fill-height>
@@ -37,9 +37,11 @@ export default {
   name: 'gb-product',
   props: ['id', 'url', 'title', 'description', 'quantity', 'price'],
   computed: {
-      combinedUrl() {
-          "https://s3.us-east-2.amazonaws.com/greenboxproductimages/" + this.url 
-      }
+  },
+  methods: {
+    getImgUrl(img) {
+      return 'https://s3.us-east-2.amazonaws.com/greenboxproductimages/' + img
+    }
   }
 
 //   computed: mapGetters([
