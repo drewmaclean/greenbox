@@ -32,6 +32,9 @@ var AWS = require('aws-sdk')
 var albumBucketName = 'imgqueue';
 var bucketRegion = 'us-east-2';
 var IdentityPoolId = 'us-east-2:9f922768-b98e-4137-a8d7-71218107b19b';
+import { mapGetters, mapActions } from 'vuex'
+import gbHeader from './Header.vue'
+import gbFooter from './Footer.vue'
 
 AWS.config.update({
   region: bucketRegion,
@@ -47,9 +50,15 @@ var s3 = new AWS.S3({
 
 export default {
     name: 'camera',
+    computed: mapGetters([
+    'customerKey'
+  ]),
     created(){
       this.use = this.$route.params.use
-      this.customerKey = this.$route.params.cstKey
+    },
+    components: {
+      gbHeader,
+      gbFooter
     },
     data() {
         return {
@@ -59,14 +68,15 @@ export default {
         showProf: false,
         showLic: false,
         use: '',
-        customerKey: 0
+        customerKey: this.$store.state.customerKey
         }
     },
-    mounted() {this.video = this.$refs.video
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-                this.video.src = window.URL.createObjectURL(stream)
-                this.video.play();
+    mounted() {
+      this.video = this.$refs.video
+      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+              this.video.src = window.URL.createObjectURL(stream)
+              this.video.play()
             })
         }
     },
@@ -85,13 +95,22 @@ export default {
                     Body: file,
                     ACL: 'public-read',
                     ContentType: 'image/jpg'
-                }, (function(err, data){ if (err) {
-                    return console.log(err.message)
-                  }
-                console.log('Successfully uploaded photo.')
-                if (this.use = 'lic') {this.showLic= true}
-                else this.showProf = true
-                this.$router.push({name: 'signup', params: {showProf:this.showProf, showLic:this.showLic}})}).bind(this))   
+                }, 
+                  (function(err, data){ 
+                    if (err) {
+                      return console.log(err.message)
+                    }
+                    console.log('Successfully uploaded photo.')
+                    if (this.use == 'lic') {
+                      this.showLic= true
+                    } 
+                    if (this.use === 'prof') {
+                      this.showProf = true
+                    }
+                    this.$router.push({name: 'signup', params: {showProf:this.showProf, showLic:this.showLic}})
+                    }).bind(this)
+                  ) 
+
                 navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
                   var track = stream.getTracks()[0];  // if only one media track
                   track.stop();

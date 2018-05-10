@@ -6,7 +6,11 @@ Vue.use(Vuex);
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  username:'',
+  password:'',
+  customerKey:0,
+  email:''
 };
 
 // mutations are operations that actually mutates the state.
@@ -33,7 +37,11 @@ const actions = {
 
 // getters are functions
 const getters = {
-  loggedIn: state => (state.isLoggedIn)
+  loggedIn: state => (state.isLoggedIn),
+  username: state => (state.username),
+  password: state => (state.password),
+  customerKey: state => (state.customerKey),
+  email: state => (state.email)
 };
 
 // A Vuex instance is created by combining the state, mutations, actions,

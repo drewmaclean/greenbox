@@ -7,9 +7,9 @@
             <v-card class="elevation-12" v-bind:style="'padding: 10px;'">
                 <h2>Sign Up</h2>
                 <v-alert v-if="alert" v-bind:message="alert"></v-alert>
-                <v-text-field prepend-icon="person" name="Username" label="Username" v-model="credentials.Username"></v-text-field>
+                <v-text-field prepend-icon="person" name="Username" label="Username" v-model="credentials.username"></v-text-field>
                 <v-text-field prepend-icon="lock" name="Password" label="Password" type="password" v-model="credentials.password"></v-text-field>
-                <v-text-field prepend-icon="mail" name="Email" label="Email" v-on:click="validateUser"></v-text-field>
+                <v-text-field prepend-icon="mail" name="Email" label="Email" v-model="email"></v-text-field>
                 <v-layout row wrap>
                     <v-flex class="text-sm-center">
                       <button class="btn btn-primary" v-bind:style="'padding: 10px;'" @click="addLicense()">Add License Photo</button>
@@ -21,7 +21,7 @@
                 <v-layout row wrap>
                     <v-flex class="text-sm-center">
                       <button class="btn btn-primary" v-bind:style="'padding: 10px;'" @click="addProfile()">Add Profile Photo</button>
-                      <v-badge left color="green" v-model="showProf" right overlay>
+                      <v-badge left color="green" v-model="showProf" overlay>
                         <v-icon slot="badge" dark small>done</v-icon>
                       </v-badge>
                     </v-flex>
@@ -44,34 +44,40 @@ import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
 import gbHeader from './Header.vue'
 import gbFooter from './Footer.vue'
+
 export default {
   name: 'signup',
+  computed: mapGetters([
+    'username',
+    'password',
+    'customerKey',
+    'email'
+  ]),
   created(){
     this.showProf = this.$route.params.showProf
-    this.showLic = this.$route.params.showLic
-    components: {
-      gbHeader,
-      gbFooter
-      }
+    this.showLic = this.$route.params.showLic},
+
+  components: {
+    gbHeader,
+    gbFooter
     },
+
   data() {
     return {
+      customerKey: this.$store.state.customerKey,
       credentials: {
-        Username: '',
-        password: ''
+        username: this.$store.state.username,
+        password: this.$store.state.password
       },
+      email: this.$store.state.email,
       error: '',
       showLic: false,
       showProf: false,
       saved: false,
       output: null,
-      customerKey: 0,
       alert: ''
     }
   },
-  computed: mapGetters([
-    'loggedIn'
-  ]),
   mounted() {
     this.video = this.$refs.video
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -83,28 +89,35 @@ export default {
     },
   methods: {
     addLicense() {
-
       this.validateUser()
-
-      this.$router.push({name: 'camera', params:{use:'lic', cstKey:this.customerKey}})
+      this.$router.push({name: 'camera', params:{use:'lic'}})
+    },
+    addProfile() {
+      this.validateUser()
+      this.$router.push({name: 'camera', params:{use:'prof'}})
     },
     validateUser(){
       console.log(this.customerKey)
-      if ((this.credentials.Username != '') && (this.credentials.password != '') && (this.customerKey === 0)) {
+      console.log(this.$store.state.customerKey)
+      if ((this.credentials.username != '') && (this.credentials.password != '') && (this.customerKey === 0)) {
       axios
         .get(
           "https://w8ldp460na.execute-api.us-east-2.amazonaws.com/test/createcustomer",
           {
             params: {
-              'userName': this.credentials.Username,
+              'userName': this.credentials.username,
               'password': this.credentials.password
             }
           }
         )
         .then(response => {
           this.output = response.data
-          console.log(response)
-          this.customerKey = this.output['customerKey']
+          
+          this.$store.state.customerKey = this.output['customerKey']
+          this.customerKey = this.$store.state.customerKey
+          this.$store.state.username = this.credentials.username
+          this.$store.state.password = this.credentials.password
+          this.$store.state.email = this.email
         })
       }
       else {this.alert = 'Please enter a username and password'}

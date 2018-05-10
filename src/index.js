@@ -43,7 +43,7 @@ routes: [
     name: 'Products',
     component: Products
   },
-  {path: '/Camera/:use:cstKey',
+  {path: '/Camera/:use',
     name: 'camera',
     component: Camera
   },
