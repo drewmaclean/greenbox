@@ -16,7 +16,7 @@
                  <router-link to="/signup" tag="button">
                   <button class="btn btn-primary" @click="submit()">Login</button>
                 </router-link>
-                <router-link to="/signup" tag="button">
+                <router-link :to="{name:'signup', params:{showProf:false,showLic:false}}" tag="button">
                   <button class="btn btn-primary">Sign Up</button>
                 </router-link>
               </v-flex>

@@ -6,10 +6,14 @@
         <v-jumbotron dark>
           <div>
             <h1>BUY POT HERE</h1>
-            <router-link to="/Login" tag="button">Shop Now</router-link>
-            <div class="quote-area" v-if="quote">
-              <h2><blockquote>{{ quote }}</blockquote></h2>      
-            </div>
+            <v-flex>
+              <router-link to="/signup" tag="button">
+                <button class="btn btn-primary" @click="submit()">Login</button>
+              </router-link>
+              <router-link :to="{name:'signup', params:{showProf:false,showLic:false}}" tag="button">
+                <button class="btn btn-primary">Sign Up</button>
+              </router-link>
+            </v-flex>
           </div>
         </v-jumbotron>
       </v-layout>
