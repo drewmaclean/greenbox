@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire" dark>
-    <v-toolbar-title prominent = "true">SpaceCase</v-toolbar-title>
+    <gb-header></gb-header>
     <v-container fluid fill-height id="app">
         <v-layout flex align-center justify-center >
           <v-card-title class="grey darken-3" hover = "true">
@@ -10,11 +10,11 @@
               <div class="alert alert-danger" v-if="error">
                 <p>{{ error }}</p>
               </div>
-              <v-text-field prepend-icon="person" name="Username" label="Username"></v-text-field>
-              <v-text-field prepend-icon="lock" name="Password" label="Password" type="password"></v-text-field>
+              <v-text-field prepend-icon="person" v-model="credentials.username" name="Username" label="Username"></v-text-field>
+              <v-text-field prepend-icon="lock" v-model="credentials.password" name="Password" label="Password" type="password"></v-text-field>
               <v-flex>
                  <router-link to="/signup" tag="button">
-                  <button class="btn btn-primary" @click="submit()">Login</button>
+                  <button class="btn btn-primary" @click="login()">Login</button>
                 </router-link>
                 <router-link :to="{name:'signup', params:{showProf:false,showLic:false}}" tag="button">
                   <button class="btn btn-primary">Sign Up</button>
@@ -25,16 +25,20 @@
           </v-card-title>
         </v-layout>
       </v-container>
-    <v-footer app fixed>
-      <span>&copy; 2017 Greenbox</span>
-    </v-footer>
+    <gb-footer></gb-footer>
   </v-app>
 </template>
 
 <script>
-
+import { mapGetters, mapActions } from 'vuex'
+import gbHeader from './Header.vue'
+import gbFooter from './Footer.vue'
 export default {
   name: 'login',
+  components: {
+    gbHeader,
+    gbFooter
+  },
   data() {
     return {
       credentials: {
@@ -45,17 +49,9 @@ export default {
     }
   },
 
-  methods: {
-
-    submit() {
-
-      var credentials = {
-        username: this.credentials.username,
-        password: this.credentials.password
-      }
-    }
-  }
-  
+  methods: mapActions([
+    "login"   
+  ])
 }
 </script>
 

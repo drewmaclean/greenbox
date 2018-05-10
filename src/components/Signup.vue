@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire" dark>
-    <v-toolbar-title prominent = "true">SpaceCase</v-toolbar-title>
+    <gb-header></gb-header>
     <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex lg8 sm8 md4>
@@ -35,20 +35,27 @@
           </v-flex>
         </v-layout>
     </v-container>
-    <v-footer app fixed>
-      <span>&copy; 2017 Greenbox</span>
-    </v-footer>
+    <gb-footer></gb-footer>
   </v-app>
 </template>
 
 <script>
 import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
+import gbHeader from './Header.vue'
+import gbFooter from './Footer.vue'
 export default {
   name: 'signup',
+<<<<<<< HEAD
   created(){
     this.showProf = this.$route.params.showProf
     this.showLic = this.$route.params.showLic
 
+=======
+  components: {
+    gbHeader,
+    gbFooter
+>>>>>>> 9b25399ff4e05cc8a32487f54b95bc665b70d3ef
   },
   data() {
     return {
@@ -65,6 +72,21 @@ export default {
       alert: ''
     }
   },
+<<<<<<< HEAD
+=======
+  computed: mapGetters([
+    'loggedIn'
+  ]),
+  mounted() {
+    this.video = this.$refs.video
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+            this.video.src = window.URL.createObjectURL(stream)
+            this.video.play()
+        })
+      }
+    },
+>>>>>>> 9b25399ff4e05cc8a32487f54b95bc665b70d3ef
   methods: {
     addLicense() {
 
