@@ -46,17 +46,14 @@ import gbHeader from './Header.vue'
 import gbFooter from './Footer.vue'
 export default {
   name: 'signup',
-<<<<<<< HEAD
   created(){
     this.showProf = this.$route.params.showProf
     this.showLic = this.$route.params.showLic
-
-=======
-  components: {
-    gbHeader,
-    gbFooter
->>>>>>> 9b25399ff4e05cc8a32487f54b95bc665b70d3ef
-  },
+    components: {
+      gbHeader,
+      gbFooter
+      }
+    },
   data() {
     return {
       credentials: {
@@ -72,8 +69,6 @@ export default {
       alert: ''
     }
   },
-<<<<<<< HEAD
-=======
   computed: mapGetters([
     'loggedIn'
   ]),
@@ -86,7 +81,6 @@ export default {
         })
       }
     },
->>>>>>> 9b25399ff4e05cc8a32487f54b95bc665b70d3ef
   methods: {
     addLicense() {
 

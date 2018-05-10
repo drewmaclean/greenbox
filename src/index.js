@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import VueMaterial from 'vue-material'
 import Products from './components/Products.vue'
 import Test from './components/Test.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import store from './store/store'
 
-<<<<<<< HEAD
 import App from './components/App.vue'
 import Home from './components/Home.vue'
 import Signup from './components/Signup.vue'
@@ -16,8 +16,6 @@ import SignupInfo from './components/SignUpInfo.vue'
 import Camera from './components/Camera.vue'
 
 Vue.use(VueMaterial)
-=======
->>>>>>> 9b25399ff4e05cc8a32487f54b95bc665b70d3ef
 Vue.use(Vuetify)
 Vue.use(VueRouter)
 
@@ -45,15 +43,13 @@ routes: [
     name: 'Products',
     component: Products
   },
-<<<<<<< HEAD
   {path: '/Camera/:use:cstKey',
     name: 'camera',
     component: Camera
-=======
+  },
   {path: '/Test',
     name: 'Test',
     component: Test
->>>>>>> 9b25399ff4e05cc8a32487f54b95bc665b70d3ef
   }
 ]})
 
