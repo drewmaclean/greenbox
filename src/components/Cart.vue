@@ -12,16 +12,15 @@
           <i>Your cart is empty!</i>
           <router-link to="/Products">Products</router-link>
         </p>
-        <p> {{cartItems}} </p>
         <v-layout  row wrap>
-          <v-list v-for="product in productList" :key="product.flngProductKey" >
+          <v-list v-for="product in cartItems" :key="product.flngProductKey" >
             <gb-product 
-              :id="product.flngProductKey" 
-              :url="product.fstrProductImageName" 
-              :title="product.fstrTitle" 
-              :description="product.fstrDescription" 
-              :quantity="product.flngQuantity"
-              :price="product.fcurPrice">
+              :id="product.id" 
+              :url="product.url" 
+              :title="product.title" 
+              :description="product.description" 
+              :quantity="product.quantity"
+              :price="product.price">
             </gb-product>
           </v-list>
         </v-layout>
@@ -41,8 +40,7 @@ import gbProduct from './Product.vue'
 export default {
   data() {
     return {
-      drawer: false,
-      productList: []
+      drawer: false
     }
   },
   components: {
@@ -56,7 +54,7 @@ export default {
     ]),
   },
   created() {
-    this.productList = this.$store.state.cartItems
+    
   },
   methods: {
     checkout(){
