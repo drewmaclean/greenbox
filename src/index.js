@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import VueMaterial from 'vue-material'
 import Products from './components/Products.vue'
 import Test from './components/Test.vue'
+import Cart from './components/Cart.vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import store from './store/store'
@@ -50,6 +51,10 @@ routes: [
   {path: '/Test',
     name: 'Test',
     component: Test
+  },
+  {path: '/Cart',
+    name: 'Cart',
+    component: Cart
   }
 ]})
 

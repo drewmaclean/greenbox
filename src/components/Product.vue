@@ -23,7 +23,7 @@
           </div>
         </v-card-title>
         <v-card-actions>
-          <v-btn flat color="orange">Add to cart</v-btn>
+          <v-btn @click="addToCart({id, url, title, description, quantity, price})" flat color="orange">Add to cart</v-btn>
           <v-btn flat color="orange">Details</v-btn>
         </v-card-actions>
       </v-card>
@@ -32,13 +32,16 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'gb-product',
   props: ['id', 'url', 'title', 'description', 'quantity', 'price'],
   computed: {
   },
   methods: {
+    ...mapMutations([
+      'addToCart'
+    ]),
     getImgUrl(img) {
       return 'https://s3.us-east-2.amazonaws.com/greenboxproductimages/' + img
     }

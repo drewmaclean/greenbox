@@ -10,7 +10,8 @@ const state = {
   username:'',
   password:'',
   customerKey:0,
-  email:''
+  email:'',
+  cartItems: []
 };
 
 // mutations are operations that actually mutates the state.
@@ -24,6 +25,9 @@ const mutations = {
   },
   logout(state) {
     state.isLoggedIn = false;
+  },
+  addToCart(state, item) {
+    state.cartItems.push(item)
   }
 };
 
@@ -33,6 +37,7 @@ const mutations = {
 const actions = {
   login: ({ commit }) => commit("login"),
   logout: ({ commit }) => commit("logout"),
+  addToCart: ({ commit } , item) => commit("addToCart")
 };
 
 // getters are functions
@@ -41,7 +46,9 @@ const getters = {
   username: state => (state.username),
   password: state => (state.password),
   customerKey: state => (state.customerKey),
-  email: state => (state.email)
+  email: state => (state.email),
+  cartItems: state => (state.cartItems),
+  cartItemCount: state => (state.cartItems.length)
 };
 
 // A Vuex instance is created by combining the state, mutations, actions,
