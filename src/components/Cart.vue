@@ -13,15 +13,39 @@
           <router-link to="/Products">Products</router-link>
         </p>
         <v-layout  row wrap>
-          <v-list v-for="product in cartItems" :key="product.flngProductKey" >
-            <gb-product 
+          <v-list two-line subheade>
+            <v-list-tile v-for="product in cartItems" :key="product.flngProductKey" avatar @click="">
+              <v-list-tile-avatar>
+                <img :src="getImgUrl(product.url)">
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title>{{product.title}}</v-list-tile-title>
+                <v-list-tile-sub-title>{{ product.description }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+              <v-list-tile-action>
+                <v-btn icon ripple>
+                  <v-icon color="grey lighten-1">add</v-icon>
+                </v-btn>
+              </v-list-tile-action>
+              <v-list-tile-action>
+                <v-btn icon ripple>
+                  <v-icon color="grey lighten-1">remove</v-icon>
+                </v-btn>
+              </v-list-tile-action>
+              <v-list-tile-action>
+                <v-btn icon ripple>
+                  <v-icon color="grey lighten-1">info</v-icon>
+                </v-btn>
+            </v-list-tile-action>
+            </v-list-tile>
+            <!-- <gb-product 
               :id="product.id" 
               :url="product.url" 
               :title="product.title" 
               :description="product.description" 
               :quantity="product.quantity"
               :price="product.price">
-            </gb-product>
+            </gb-product> -->
           </v-list>
         </v-layout>
       </v-container>
@@ -59,6 +83,9 @@ export default {
   methods: {
     checkout(){
       alert('Pay us $')
+    },
+    getImgUrl(img) {
+      return 'https://s3.us-east-2.amazonaws.com/greenboxproductimages/' + img
     }
   }
 }

@@ -37,7 +37,7 @@ const mutations = {
 const actions = {
   login: ({ commit }) => commit("login"),
   logout: ({ commit }) => commit("logout"),
-  addToCart: ({ commit } , item) => commit("addToCart")
+  addToCart: ({ commit } , item) => commit("addToCart", item)
 };
 
 // getters are functions

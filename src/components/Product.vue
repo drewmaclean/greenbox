@@ -39,7 +39,10 @@ export default {
   computed: {
   },
   methods: {
-    ...mapMutations([
+    // ...mapMutations([
+    //   'addToCart'
+    // ]),
+    ...mapActions([
       'addToCart'
     ]),
     getImgUrl(img) {
